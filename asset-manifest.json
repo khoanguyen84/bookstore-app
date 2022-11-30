@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/bookstore-app/static/css/main.bd08a59a.css",
+    "main.js": "/bookstore-app/static/js/main.074fa56d.js",
+    "static/media/fa-solid-900.ttf": "/bookstore-app/static/media/fa-solid-900.b1a653db79258eeccc5d.ttf",
+    "static/media/fa-brands-400.ttf": "/bookstore-app/static/media/fa-brands-400.450a5c898f0b184b968b.ttf",
+    "static/media/fa-solid-900.woff2": "/bookstore-app/static/media/fa-solid-900.41c0f706d8ce93933771.woff2",
+    "static/media/fa-brands-400.woff2": "/bookstore-app/static/media/fa-brands-400.3ac6859b28be946745f9.woff2",
+    "static/media/fa-regular-400.ttf": "/bookstore-app/static/media/fa-regular-400.3cd9fb8fcec4ad0f99d4.ttf",
+    "static/media/spinner.gif": "/bookstore-app/static/media/spinner.f53aa23fcdfc7bd67f43.gif",
+    "static/media/fa-regular-400.woff2": "/bookstore-app/static/media/fa-regular-400.1f3772178d9e5bed38a6.woff2",
+    "static/media/fa-v4compatibility.ttf": "/bookstore-app/static/media/fa-v4compatibility.e314b618134d5be20996.ttf",
+    "static/media/fa-v4compatibility.woff2": "/bookstore-app/static/media/fa-v4compatibility.4ee7f902d88f819e251c.woff2",
+    "index.html": "/bookstore-app/index.html",
+    "main.bd08a59a.css.map": "/bookstore-app/static/css/main.bd08a59a.css.map",
+    "main.074fa56d.js.map": "/bookstore-app/static/js/main.074fa56d.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.bd08a59a.css",
+    "static/js/main.074fa56d.js"
+  ]
+}
