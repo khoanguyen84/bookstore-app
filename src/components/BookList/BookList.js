@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import { toast } from 'react-toastify'
 import BookService from './../../services/bookService';
 import Helper from './../../services/helper';
 import Spinner from './../Spinner/Spinner';
@@ -10,11 +12,14 @@ function BookList() {
         errorMessage: ""
     })
 
+    const [keyword, setKeyword] = useState("");
+
     useEffect(() => {
         try {
             setState({ ...state, loading: true });
             async function getData() {
                 let resBook = await BookService.getBooks();
+                resBook.data.sort((book1, book2) => book2.id - book1.id);
                 setState({
                     ...state,
                     loading: false,
@@ -30,6 +35,59 @@ function BookList() {
         }
     }, [])
 
+    const handleSearch = async (e) => {
+        let keyword = e.target.value;
+        setState({ ...state, loading: true });
+        let bookRes = await BookService.getBooks();
+        setState({
+            ...state,
+            books: keyword ? bookRes.data.filter((book) => book.bookName.toLowerCase().includes(keyword.toLowerCase())) : bookRes.data,
+            loading: false
+        })
+    }
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        setState({ ...state, loading: true });
+        let bookRes = await BookService.getBooks();
+        setState({
+            ...state,
+            books: keyword ? bookRes.data.filter((book) => book.bookName.toLowerCase().includes(keyword.toLowerCase()) ||
+                book.author.toLowerCase().includes(keyword.toLowerCase()))
+                : bookRes.data,
+            loading: false
+        })
+    }
+
+    const removeBook = async (book) => {
+        try {
+            let confirm = window.confirm(`Are sure to remove book ${book.bookName}?`);
+            if (confirm) {
+                setState({ ...state, loading: true });
+                let delelteRes = await BookService.deleteBook(book.id);
+                if (delelteRes.data) {
+                    let bookRes = await BookService.getBooks();
+                    toast.success(`Book ${delelteRes.data.bookName} has been removed success!`, 
+                                    { position: "bottom-right", autoClose: 2 * 1000 });
+                    setState({
+                        ...state,
+                        books: bookRes.data,
+                        loading: false
+                    })
+                }
+                else {
+                    toast.error('Something went wrong, please try again later!');
+                }
+            }
+        } catch (error) {
+            toast.error(error.message);
+            setState({
+                ...state,
+                loading: false,
+                errorMessage: error.message
+            })
+        }
+    }
     const { loading, books } = state;
     return (
         <>
@@ -37,16 +95,17 @@ function BookList() {
                 <div className="container">
                     <div className="d-flex align-items-center">
                         <h3 className="me-2">Book Manager</h3>
-                        <button className="btn btn-primary btn-sm">
+                        <Link to={"/bookstore-app/book/create"} className="btn btn-primary btn-sm">
                             <i className="fa fa-circle-plus me-2"></i>
                             New
-                        </button>
+                        </Link>
                     </div>
                     <p className="fst-italic">Reprehenderit excepteur quis exercitation deserunt laboris enim. Excepteur tempor proident incididunt officia excepteur occaecat ea cupidatat. Ea officia eu quis aliquip veniam eiusmod aliqua.</p>
                     <div>
-                        <form className="d-flex w-25">
-                            <input type="text" className="form-control" />
-                            <button className="btn btn-outline-secondary btn-sm ms-2">Search</button>
+                        <form onSubmit={handleSubmit} className="d-flex w-25">
+                            {/* <input type="text" className="form-control" onInput={handleSearch} /> */}
+                            <input type="text" className="form-control" value={keyword} onInput={(e) => setKeyword(e.target.value)} />
+                            <button type="submit" className="btn btn-outline-secondary btn-sm ms-2">Search</button>
                         </form>
                     </div>
                 </div>
@@ -55,8 +114,8 @@ function BookList() {
                 <div className="container">
                     <div className="row">
                         {
-                            loading ? <Spinner/> : (
-                                books.map(book => (
+                            loading ? <Spinner /> : (
+                                books && books.map(book => (
                                     <div className="col-md-4 mb-4" key={book.id}>
                                         <div className="card">
                                             <div className="card-body">
@@ -85,7 +144,7 @@ function BookList() {
                                                             <button className="btn btn-primary btn-sm my-2">
                                                                 <i className="fa fa-edit"></i>
                                                             </button>
-                                                            <button className="btn btn-danger btn-sm">
+                                                            <button className="btn btn-danger btn-sm" onClick={() => removeBook(book)}>
                                                                 <i className="fa fa-trash"></i>
                                                             </button>
                                                         </div>
