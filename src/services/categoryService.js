@@ -5,6 +5,9 @@ class CategoryService {
     static getCategories() {
         return axios.get(CATEGORY_API);
     }
+    static getCategory(catId) {
+        return axios.get(`${CATEGORY_API}/${catId}`);
+    }
 }
 
 export default CategoryService;

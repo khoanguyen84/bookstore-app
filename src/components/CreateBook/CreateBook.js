@@ -6,7 +6,9 @@ import PublisherService from './../../services/publisherService';
 import noBookPhoto from '../../assets/images/noBookPhoto.jpg';
 import BookService from './../../services/bookService';
 import FileHelper from './../../services/fileHelper';
+import Helper from "../../services/helper";
 
+var imageUrl = "";
 function CreateBook() {
     const [state, setState] = useState({
         loading: false,
@@ -42,6 +44,13 @@ function CreateBook() {
         } catch (error) {
             toast.error(error.message)
             setState({ ...state, loading: false, errorMessage: error.message });
+        }
+
+        return async () => {
+            if(imageUrl){
+                let filename = Helper.getFilename(imageUrl);
+                let destroyRes = await FileHelper.destroyImage(filename);
+            }
         }
     }, [])
 
@@ -89,6 +98,7 @@ function CreateBook() {
         if (uploadRes.data) {
             toast.success('Photo uploaded success!');
             setFileImg({ ...fileImg, uploading: false });
+            imageUrl = uploadRes.data.url;
             setState({
                 ...state,
                 book: {

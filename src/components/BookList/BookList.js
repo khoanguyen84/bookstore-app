@@ -138,12 +138,12 @@ function BookList() {
                                                     </div>
                                                     <div className="col-md-1">
                                                         <div className="d-flex flex-column align-items-center">
-                                                            <button className="btn btn-warning btn-sm">
+                                                            <Link to={`/bookstore-app/book/view/${book.id}`} className="btn btn-warning btn-sm">
                                                                 <i className="fa fa-eye"></i>
-                                                            </button>
-                                                            <button className="btn btn-primary btn-sm my-2">
+                                                            </Link>
+                                                            <Link to={`/bookstore-app/book/update/${book.id}`} className="btn btn-primary btn-sm my-2">
                                                                 <i className="fa fa-edit"></i>
-                                                            </button>
+                                                            </Link>
                                                             <button className="btn btn-danger btn-sm" onClick={() => removeBook(book)}>
                                                                 <i className="fa fa-trash"></i>
                                                             </button>

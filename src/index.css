@@ -18,6 +18,11 @@ body {
   height: 200px;
   border-radius: 5px;
 }
+.photo-xlg{
+  width: 240px;
+  height: 260px;
+  border-radius: 5px;
+}
 
 .spinner{
   width: 60px;
