@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/bookstore-app/static/css/main.6cab5258.css",
-    "main.js": "/bookstore-app/static/js/main.d18c7736.js",
+    "main.css": "/bookstore-app/static/css/main.2636cd07.css",
+    "main.js": "/bookstore-app/static/js/main.03b0f75a.js",
     "static/media/fa-solid-900.ttf": "/bookstore-app/static/media/fa-solid-900.b1a653db79258eeccc5d.ttf",
     "static/media/fa-brands-400.ttf": "/bookstore-app/static/media/fa-brands-400.450a5c898f0b184b968b.ttf",
     "static/media/fa-solid-900.woff2": "/bookstore-app/static/media/fa-solid-900.41c0f706d8ce93933771.woff2",
@@ -13,11 +13,11 @@
     "static/media/fa-v4compatibility.ttf": "/bookstore-app/static/media/fa-v4compatibility.e314b618134d5be20996.ttf",
     "static/media/fa-v4compatibility.woff2": "/bookstore-app/static/media/fa-v4compatibility.4ee7f902d88f819e251c.woff2",
     "index.html": "/bookstore-app/index.html",
-    "main.6cab5258.css.map": "/bookstore-app/static/css/main.6cab5258.css.map",
-    "main.d18c7736.js.map": "/bookstore-app/static/js/main.d18c7736.js.map"
+    "main.2636cd07.css.map": "/bookstore-app/static/css/main.2636cd07.css.map",
+    "main.03b0f75a.js.map": "/bookstore-app/static/js/main.03b0f75a.js.map"
   },
   "entrypoints": [
-    "static/css/main.6cab5258.css",
-    "static/js/main.d18c7736.js"
+    "static/css/main.2636cd07.css",
+    "static/js/main.03b0f75a.js"
   ]
 }
